@@ -1,0 +1,44 @@
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Addtocart {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jazeera\\Downloads\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+		
+		String[] itemsneeded = {"Cucumber", "Brocolli"};
+		
+		List<WebElement> products = driver.findElements(By.className("h4.product-name"));
+		
+		for(int i=0; i<products.size() ; i++) {
+			
+	      String[] name = products.get(i).getText().split(" -");
+	      String nameText = name[0];
+	      
+	      
+	      List converted = Arrays.asList(itemsneeded);
+	      
+	      if(converted.contains("nameText")) {
+	    	  
+	    	  driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
+	    	  System.out.println("hi");
+	    	 
+	    	  
+	      }
+	      else {
+	    	  System.out.println("bye");
+	      }
+		}
+
+	}
+
+}
